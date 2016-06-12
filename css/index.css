@@ -1,0 +1,67 @@
+*{margin: 0; padding: 0; font-family:"幼圆";}
+#body {
+	margin: auto;
+	height: 700px;
+	width: 1160px;
+}
+body {
+	background-image: url(../photo/bd.jpg);
+	background-repeat: no-repeat;
+    background-size: 100%;
+}
+#body #header{ text-align: center; width: 1160px; height: 70px; color: #ffffff;}
+#body #header h1{position: relative; top: 20px;}
+
+#body #main{ width: 1160px; height: 600px;}
+#body #main #photo{width:760px; height: 560px; float: left; padding-top:40px;}
+#body #main #photo #p2{
+	width:760px;
+	height: 600px;
+	float: left;
+	position: relative;
+	bottom: 542px;
+}
+
+
+#body #main #photo #p3{
+	width:760px;
+	height: 600px;
+	float: left;
+	position: relative;
+	bottom: 1140px;
+}
+#body #main #login{width: 400px; height: 555px; float: right; padding-top: 45px;}
+#body #main #login #f
+{	width: 300px; 
+	height: 200px;
+	margin-top: 140px; 
+	margin-left: 50px;
+	padding-top:15px;
+	background:rgba(134,100,67,0.2);
+	box-shadow:2px 7px 5px 0 rgba(0,0,0,0.3);
+}
+#body #main #login #f #user{margin-top: 15px;}
+#body #main #login #f #admin {
+	position: relative;
+	top: 50px;
+	float: right;
+	height: 30px;
+	width: 100px;
+}
+#body #main #login #f #admin a {
+	color: #FFFFFF;
+	text-decoration: none;
+	font-size:15px;
+}
+#body #main #login #f #admin a:hover {
+	color: #FFFFFF;
+	text-decoration: underline;
+	font-size:15px;
+}
+#body #main #login #f #pwd{margin-top: 15px;}
+#body #main #login #f .sub{margin-top: 15px; width: 258px; height: 30px; font-size: 18px; position: relative; top: 20px; left: 20px; background-color:#1A4A95; color:#FFFFFF; font-family: "Microsoft Yahei","微软雅黑",SimHei,"黑体","Hiragino Sans GB",STHeiTi,sans-serif; border:0; border-radius:5px;}
+#body #main #login #f .input{width: 258px; position: relative; top: 20px; left: 20px; height: 25px; padding: 11px 0 11px 10px; line-height: 25px; color: #333333; font-family: Verdana,Tahoma,Arial; font-size: 18px; border-radius: 5px; border:0; background-color:#FFFFFF;opacity:1.0;}
+#body #footer{text-align: center; width: 1160px; height: 30px; color: #cccccc;}
+#body #main #photo .filter {
+	opacity:1.0;/*其他，透明度50%*/
+}

@@ -1,0 +1,104 @@
+*{margin:0; padding:0;font-family: "幼圆";}
+body {
+	background-image: url(../photo/bg.jpg);
+}
+#body {
+	margin: auto;
+	height: 900px;
+	width: 1160px;
+}
+
+#body #header{ text-align: center; width: 1160px; height: 100px; color: #ffffff;}
+#body #header h1{position: relative; top: 40px;}
+
+#body #footer{text-align: center; width: 1160px; height: 50px; color: #cccccc;}#body #logout {
+	height: 20px;
+	width: 50px;
+	position: relative;
+	left: 1100px;
+	bottom: 30px;
+	
+}
+#body #order{width: 1160px; height: 700px;}
+#body #order #apply {
+	width:500px;
+	margin: auto;
+	border:rgba(211,237,240,0.4);
+	border-radius:15px;
+	box-shadow:2px 7px 5px 0 rgba(0,0,0,0.3);
+	padding:30px;
+	padding-left: auto;
+	padding-right:auto;
+	background:rgba(211,237,240,0.4);
+}
+#body #order #apply #reason {
+	height: 120px;
+	width: 504px;
+	margin-top:5px;
+	line-height: 25px;
+	font-size:17px;
+	text-indent:4px;
+	vertical-align: middle;
+	border:0;
+	border-radius:4px;
+	border-shadow:none;
+	resize:none;
+}
+#body #order #apply .inp {
+	width: 180px;
+	height: 25px;
+	margin-top:5px;
+	line-height: 25px;
+	font-size:17px;
+	text-indent:4px;
+	vertical-align: middle;
+	border:0;
+	border-radius:4px;
+	border-shadow:none;
+}
+
+
+#body #order #apply p {
+	font-size: 18px;
+	line-height: 30px;
+}
+#body #order #apply h3 {
+	text-align: center;
+}
+#body #order #apply #protocol {
+	margin-top:5px;
+	padding-left: 3px;
+	padding-top:10px;
+	border: 2px dotted #999999;
+	width: 500px;
+	height: 250px;
+}
+#body #order #apply #sub {
+	height: 40px;
+	width: 200px;
+	font-weight: bold;
+	color: #FFFFFF;
+	background-color: #FF9900;
+	border:0;
+	border-radius:5px;
+	font-family: "幼圆";
+	font-size: 18px;
+	position: relative;
+	top: 10px;
+	left:150px;
+}
+#body #order #apply span {
+	top: 5px;
+	position: relative;
+	height: 30px;
+	width: 300px;
+	font-family: "幼圆";
+	font-size: 13px;
+	font-weight: bold;
+}
+#body #order #apply #check {
+	width:13px;
+	height:13px;
+	position: relative;
+	top: 8px;
+}

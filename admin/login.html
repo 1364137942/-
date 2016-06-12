@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+
+    <title>课室管理系统后台管理</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+    <style type="text/css">
+        html,body{
+            height: 100%;
+        }
+        .box{
+            margin: 0 auto;
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        .login{
+            width: 100%;
+            max-width:500px;
+            height: 300px;
+            position: absolute;
+            top: 50%;
+            margin-top: -200px;
+            border: solid 2px cadetblue;
+        }
+        @media screen and (min-width:500px){
+            .login {
+                left: 50%;
+                /*设置负值，为要定位子盒子的一半宽度*/
+                margin-left: -250px;
+            }
+        }
+
+        .login p{
+            height: 50px;
+            line-height: 50px;
+            font-weight: 700;
+            font-size: 32px;
+            text-align: center;
+            background: chocolate;
+            border-bottom: solid 4px cadetblue;
+        }
+
+        .login form{
+            padding: 10px;
+            font-size: 26px;
+        }
+        .login form table tr{
+            height: 70px;
+        }
+        .login form table td{
+            text-align: right;
+        }
+        .login form table td:last-child{
+            text-align: center;
+        }
+        .login form input{
+            border-radius: 5px;
+            border: skyblue 2px solid;
+            outline: none;
+            -webkit-transition: box-shadow 0.30s ease-in-out;
+            -moz-transition:  box-shadow 0.30s ease-in-out;
+        }
+        .login form input:focus{
+            outline:none;
+            border:#87C6F9 1px solid;
+            box-shadow: 0 0 8px rgba(103, 166, 217, 1);
+        }
+        .login form button{
+            border-radius: 5px;
+            border: solid cadetblue 1px;
+            background: cadetblue;
+            font-size: 26px;
+            height: 50px;
+            width: 80px;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="login">
+            <p>课室管理系统后台登陆</p>
+
+            <form action="checkLogin.php" method="post">
+                <table>
+                    <tr>
+                        <td>用户名：</td>
+                        <td><input type="text" name="user" size="24" maxlength="16"/></td>
+                    </tr>
+                    <tr>
+                        <td>密码：</td>
+                        <td><input type="password" name="password" size="24" maxlength="16"/></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><button type="submit">登陆</button></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+
+    </div>
+</body>
+<script>
+    document.forms[0].addEventListener('submit',function(event){
+        if(document.forms[0].user.value == '' || document.forms[0].password.value == ''){
+            alert('用户名或密码为空');
+            event.preventDefault();
+        }
+    },false)
+</script>
+</html>
