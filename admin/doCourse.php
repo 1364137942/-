@@ -1,4 +1,5 @@
 <?php
+header("Content-type:text/html;charset=utf-8");
 $filename = $_FILES['file']['tmp_name'];
 if (empty ($filename)) {
     echo "<script>alert('请选择要导入的CSV文件！');self.location='course.php';</script>";
@@ -32,6 +33,7 @@ if($data){
 $value = substr($value,0,-1); //去掉最后一个逗号
 include "../Mysql.class.php";
 $Mysql = new Mysql();
+$Mysql->query("delete from course");
 $re = $Mysql->query("insert into course (class_id,week,time) values $value");//批量插入数据表中
 
 if($re){

@@ -1,7 +1,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>课室预约系统</title>
     <link rel="stylesheet" type="text/css" href="../css/index.css">
     <script type="text/javascript">
         var fil1=1.0;

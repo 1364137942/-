@@ -1,5 +1,5 @@
 <?php
-
+header("Content-type:text/html;charset=utf-8");
     $filename = $_FILES['file']['tmp_name'];
     if (empty ($filename)) {
         echo "<script>alert('请选择要导入的CSV文件！');self.location='classList.php';</script>";

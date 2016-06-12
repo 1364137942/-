@@ -14,7 +14,7 @@ if(!(isset($_SESSION['user']) && !empty($_SESSION['user']))){
 <head lang="en">
     <meta charset="UTF-8">
 
-    <title>课室管理系统后台管理</title>
+    <title>课室预约系统后台管理</title>
     <link rel="stylesheet" href="../css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../css/management.css"/>
     <script src="../js/jquery.min.js"></script>
@@ -111,10 +111,10 @@ if(!(isset($_SESSION['user']) && !empty($_SESSION['user']))){
         <?php
         echo "<div class='page'>";
         echo "<a href='classList.php?page=1'>首页</a>";
-        if ($curPage != 1) {
+        if ($curPage != 1 && $curPage != 0) {
             echo "<a href='classList.php?page=" . ($curPage - 1) . "'>上一页</a>";
         }
-        for ($i = ($curPage - 3) <= 0 ? 1 : ($curPage - 3); $i <= ($pageList['pageNum'] < 6 ? $pageList['pageNum'] : 6); $i++) {
+        for ($i = ($curPage - 2) <= 0 ? 1 : ($curPage - 2); $i <= (($curPage+2) >= $pageList['pageNum'] ? $pageList['pageNum'] : ($curPage+2)); $i++) {
             echo "<a href='classList.php?page=" . $i . "'>" . $i . "</a>";
         }
         if ($curPage != $pageList['pageNum']) {

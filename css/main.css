@@ -14,9 +14,11 @@ body {
 #body #header h1{position: relative; top: 40px;}
 #body #main{width: 1160px; height: 670px;}
 #body #main #sel{width: 1160px; height: 50px;}
-#body #footer{text-align: center; width: 1160px; height: 50px; color: #cccccc;}#body #main #sel input {
+#body #footer{width:200px; text-align:center;color: #003399;margin: 0 auto}
+#body #main #sel input {
 	margin-left: 20px;
 	height: 20px;
+
 }
 #body #main #room {
 	float: left;
@@ -389,5 +391,28 @@ body {
     height:13px;
     position: relative;
     top: 8px;
+}
+#body #logout p{
+    height: 30px;
+    width: 300px;
+    position: relative;
+    left: 950px;
+    /*bottom: 25px;*/
+    color: #003366;
+    font-size: 20px;
+    line-height: 30px;
+}
+#body #logout p a {
+    /*text-decoration: none;*/
+    /*font-size: 20px;*/
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
+}
+#body #logout p img {
+    /*color: #003366;*/
+    /*text-decoration: none;*/
+    /*font-size: 20px;*/
+    vertical-align: middle;
 }
 

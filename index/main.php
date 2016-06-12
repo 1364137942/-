@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>无标题文档</title>
+<title>课室预约系统</title>
 <link rel="stylesheet" type="text/css" href="../css/main.css">
 <script src="../js/classroom.js"></script>
 <script src="../js/jquery.min.js"></script>
@@ -25,6 +25,9 @@
     include("header.html");
     ?>
 	<div id="main">
+        <div id="logout">
+            <p><?php echo $_SESSION['user']."(".$_SESSION['num'].")";?><a href="main.php?value=1"><img src="../photo/logout.png" width="25"  height="25"/></a></p>
+        </div>
 		<div id="sel">
 		<form method="post" action="javascript:void(0);">
 		  <input id="date" type="date" value="2016-06-06" />
@@ -58,8 +61,7 @@
 		   <option value="5">5</option>
 		  </select>
 		  <input name="sub"  id="search" type="button" value="搜索" />
-		   <a href="main.php?value=1">注销</a>
-		 </form>
+        </form>
 		
 		</div>
 <!--        <div id="lab">-->
@@ -141,7 +143,7 @@
                 <input type="text" class="inp" name="time" hidden="hidden" value=""/>
                 <input type="text" class="inp" name="id" hidden="hidden" value=""/>
 
-                用途及申请理由：<textarea name="reason" id="reason"  placeholder="" ></textarea>
+                用途及申请理由：<textarea name="reason" id="reason" maxlength="100"  placeholder="字数限制100字" ></textarea>
 
                 <div id="protocol">
                     <h3>《课室使用协议》</h3>
@@ -154,7 +156,7 @@
 
                 <input name="agree" id ="check" type="checkbox" value="" /><span>宝宝已阅读并同意以上协议</span>
                 <br>
-                <input name="sub" type="submit" id="sub"  onmouseover="cover()" onmouseout="out()" value="提交本宝宝的申请" />
+                <input name="sub" type="submit" id="sub"  onmouseover="cover()" onmouseout="out()" onclick="return cli()" value="提交本宝宝的申请" />
 
             </form>
 
@@ -167,6 +169,7 @@
 </div>
 </body>
 <script>
+
     document.getElementById('search').addEventListener('click',function(){
         var date = document.getElementById('date').value,
             time = document.getElementById('time').value,
@@ -209,18 +212,25 @@
                             case '2': className += " medium";break;
                             case '3': className += " large";break;
                         }
+                        var flag = 0;
                         if(data[item].week != null){
                             className += ' busy';
+                            flag = 1;
                         }else {
                             switch (data[item].check){
-                                case '1': className += " chosen";break;
-                                case '2': className += " busy";break;
+                                case '1': className += " chosen";flag = 1;break;
+                                case '2': className += " busy";flag = 1;break;
                                 default : className += " free";break;
                             }
                         }
                         classroom += data[item].building;
                         classroom += data[item].room;
-                        div += '<div class="'+className+'" onmouseover="getInfo(this)"><a href="javascript:void(0)" onclick="order('+data[item].id+",'"+classroom+'\')">'+(i++)+'</a></div>';
+                        if(flag == 0){
+                            div += '<div class="'+className+'" onmouseover="getInfo(this)"><a href="javascript:void(0)" onclick="order('+data[item].id+",'"+classroom+'\')">'+(i++)+'</a></div>';
+                        }else{
+                            div += '<div class="'+className+'" onmouseover="getInfo(this)"><a href="javascript:void(0)">'+(i++)+'</a></div>';
+                        }
+
                         classroom = "";
                     }
                     if(type == 1){
@@ -263,7 +273,7 @@
             time = document.getElementById('time').value;
         document.getElementById('classroom').innerHTML += classroom;
         var orderForm = document.forms[1];
-        console.log(orderForm);
+//        console.log(orderForm);
         orderForm.date.value = date;
         orderForm.time.value = time;
         orderForm.id.value = id;

@@ -14,7 +14,7 @@ if(!(isset($_SESSION['user']) && !empty($_SESSION['user']))){
 <head lang="en">
     <meta charset="UTF-8">
 
-    <title>课室管理系统后台管理</title>
+    <title>课室预约系统后台管理</title>
     <link rel="stylesheet" href="../css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../css/management.css"/>
     <script src="../js/jquery.min.js"></script>

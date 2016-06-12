@@ -23,23 +23,58 @@ function cover(){
 function out(){
     document.getElementById("sub").style.backgroundColor="#FF9900";
 }
-/*$.ajax({
+function cli(){
+    var re = /^1\d{10}$/;
+    var res=/^\+?[1-9][0-9]*$/;
+    var p=document.getElementsByName("phone")[0].value;
+    var m=document.getElementsByName("email")[0].value;
+    var r=document.getElementsByName("reason")[0].value;
+    var t=document.getElementsByName("agree")[0].checked;
 
-    type: 'POST',
-
-    url: 'getClass.php' ,
-
-    data: {
-        date:
-            time:
-building:
-           
-    } ,
-    dataType: "json",
-    success: function (data) {
-
+    if(p==""||m==""||r==""){alert("所有信息均不能为空");return false;}
+    else if (m.replace(/\ /g,"").search(/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/) == -1)
+    { alert('请输入正确的Email地址');
+        if(document.all)
+        {
+            event.returnValue=false;
+        }
+        else
+        {
+            event.preventDefault();
+        }
     }
+    else if (!re.test(p)) {
+        alert("请输入正确的电话号码");
+        if(document.all)
+        {
+            event.returnValue=false;
+        }
+        else
+        {
+            event.preventDefault();
+        }
+    } else if(r.length>100){
+        alert("理由应少于100字");
+        if(document.all)
+        {
+            event.returnValue=false;
+        }
+        else
+        {
+            event.preventDefault();
+        }
+    }else if(t==false){
+        alert("请阅读并接受协议");
+        if(document.all)
+        {
+            event.returnValue=false;
+        }
+        else
+        {
+            event.preventDefault();
+        }
+    }
+}
 
-    
 
-});*/
+
