@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
 session_start();
-if(!(isset($_SESSION['user']) && !empty($_SESSION['user']))){
+if(!(isset($_SESSION['admin']) && !empty($_SESSION['admin']))){
     header('location:login.html');
     exit;
 }else{
@@ -43,7 +43,7 @@ if(!(isset($_SESSION['user']) && !empty($_SESSION['user']))){
             <li role="presentation" ><a href="classList.php">导入课室列表</a></li>
             <li role="presentation"  class="active"><a href="course.php">导入课表</a></li>
             <li class="user">
-                <?php echo $_SESSION['user']; ?>|<span><a href="loginout.php">注销</a></span>
+                <?php echo $_SESSION['admin']; ?>|<span><a href="loginout.php">注销</a></span>
             </li>
         </ul>
 

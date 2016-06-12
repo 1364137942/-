@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
 session_start();
-if(!(isset($_SESSION['user']) && !empty($_SESSION['user']))){
+if(!(isset($_SESSION['admin']) && !empty($_SESSION['admin']))){
     header('location:login.html');
     exit;
 }else{
@@ -51,6 +51,7 @@ if(!(isset($_SESSION['user']) && !empty($_SESSION['user']))){
             top: 0;
             left: 0;
             border-radius: 10px;
+            resize:none;
         }
     </style>
 </head>
@@ -62,7 +63,7 @@ if(!(isset($_SESSION['user']) && !empty($_SESSION['user']))){
             <li role="presentation"><a href="classList.php">导入课室列表</a></li>
             <li role="presentation"><a href="course.php">导入课表</a></li>
             <li class="user">
-                <?php echo $_SESSION['user']; ?>|<span><a href="loginout.php">注销</a></span>
+                <?php echo $_SESSION['admin']; ?>|<span><a href="loginout.php">注销</a></span>
             </li>
         </ul>
 
@@ -111,7 +112,7 @@ if(!(isset($_SESSION['user']) && !empty($_SESSION['user']))){
             foreach ($pageList['result'] as $v) {
                 echo "<tr>";
                 echo "<td width='5%'>" . $i++ . "<input type='text' hidden='hidden' class='id' name='id' value='".$v['order_id']."'></td>";
-                echo "<td width='10%'>";
+                echo "<td width='10%' class='type'>";
                 switch($v['type']){
                     case 1: echo "教室";break;
                     case 2: echo "实验室";break;
@@ -145,10 +146,10 @@ if(!(isset($_SESSION['user']) && !empty($_SESSION['user']))){
         <?php
         echo "<div class='page'>";
         echo "<a href='management.php?page=1'>首页</a>";
-        if ($curPage != 1) {
+        if ($curPage != 1 && $curPage != 0) {
             echo "<a href='management.php?page=" . ($curPage - 1) . "'>上一页</a>";
         }
-        for ($i = ($curPage - 3) <= 0 ? 1 : ($curPage - 3); $i <= ($pageList['pageNum'] < 6 ? $pageList['pageNum'] : 6); $i++) {
+        for ($i = ($curPage - 2) <= 0 ? 1 : ($curPage - 2); $i <= (($curPage+2) >= $pageList['pageNum'] ? $pageList['pageNum'] : ($curPage+2)); $i++) {
             echo "<a href='management.php?page=" . $i . "'>" . $i . "</a>";
         }
         if ($curPage != $pageList['pageNum']) {
@@ -174,7 +175,8 @@ if(!(isset($_SESSION['user']) && !empty($_SESSION['user']))){
                 name = parent.find('td.name').text(),
                 date = parent.find('td.date').text(),
                 time = parent.find('td.time').text(),
-                email = parent.find('td.email').text();
+                email = parent.find('td.email').text(),
+                type = parent.find('td.type').text();
 
             $.ajax({
                 type: 'POST',
@@ -187,7 +189,8 @@ if(!(isset($_SESSION['user']) && !empty($_SESSION['user']))){
                     'room' : room,
                     'name' : name,
                     'date' : date,
-                    'time' : time
+                    'time' : time,
+                    'type' : type
                 },
                 dataType: 'json',
                 success: function (data){

@@ -24,7 +24,7 @@ if(!(isset($_SESSION['user']) && !empty($_SESSION['user']))){
     $query = "insert into `order`(class_id,date,time,name,num,phone,email,reason) VALUES ".$data;
     $re = $Mysql->query($query);
     if($re){
-        echo "<meta charset='utf-8'><script>alert('提交申请成功！');window.location = history.go(-1);</script>";
+        echo "<meta charset='utf-8'><script>alert('提交申请成功！');window.location.href = \"order.php\";</script>";
     }else{
         echo "<meta charset='utf-8'><script>alert('提交申请失败！');window.location = history.go(-1);</script>";
     }

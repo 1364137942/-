@@ -13,7 +13,9 @@ class Page{
     private $pageNum;
     private $result;
     public function __construct($Mysql,$all,$perpage,$eachPage){
-        $this->totalPageNum = $Mysql->getRow($all)['total_num'];
+
+        $arr = $Mysql->getRow($all);
+        $this->totalPageNum = $arr['total_num'];
         $this->perpage = $perpage;
         $this->pageNum = ceil($this->totalPageNum / $perpage); // 向上取整
         $this->result = $class = $Mysql->getAll($eachPage);

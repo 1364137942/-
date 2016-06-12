@@ -14,12 +14,12 @@ header("Content-type:text/html;charset=utf-8");
     $value = '';
     if($data){
         for ($i = 2; $i <= $data->sheets[0]['numRows']; $i++){
-            $id = iconv('utf-8', 'utf-8', $data->sheets[0]['cells'][$i][1]); //中文转码
-            $building = iconv('utf-8', 'utf-8', $data->sheets[0]['cells'][$i][2]); //中文转码
-            $room = iconv('utf-8', 'utf-8', $data->sheets[0]['cells'][$i][3]); //中文转码
-            $size = iconv('utf-8', 'utf-8', $data->sheets[0]['cells'][$i][4]); //中文转码
-            $type = iconv('utf-8', 'utf-8', $data->sheets[0]['cells'][$i][5]); //中文转码
-            $usage = iconv('utf-8', 'utf-8', $data->sheets[0]['cells'][$i][6]); //中文转码
+                $id = iconv('utf-8', 'utf-8', $data->sheets[0]['cells'][$i][1]); //中文转码
+                $building = iconv('utf-8', 'utf-8', $data->sheets[0]['cells'][$i][2]); //中文转码
+                $room = iconv('utf-8', 'utf-8', $data->sheets[0]['cells'][$i]['3']); //中文转码
+                $size = iconv('utf-8', 'utf-8', $data->sheets[0]['cells'][$i]['4']); //中文转码
+                $type = iconv('utf-8', 'utf-8', $data->sheets[0]['cells'][$i][5]); //中文转码
+                $usage = iconv('utf-8', 'utf-8', $data->sheets[0]['cells'][$i][6]); //中文转码
 
             if(empty($id)){
                 break;

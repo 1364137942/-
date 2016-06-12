@@ -403,7 +403,14 @@ body {
     line-height: 30px;
 }
 #body #logout p a {
-    /*text-decoration: none;*/
+    text-decoration: none;
+    /*font-size: 20px;*/
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
+}
+#body #logout p a:hover {
+    text-decoration:underline;
     /*font-size: 20px;*/
     display: inline-block;
     height: 30px;

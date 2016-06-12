@@ -15,8 +15,14 @@ $email = mysql_real_escape_string($_POST['email']);
 $date = mysql_real_escape_string($_POST['date']);
 $time = mysql_real_escape_string($_POST['time']);
 $id = mysql_real_escape_string($_POST['order_id']);
+$type = mysql_real_escape_string($_POST['type']);
 $query = "update `order` set `check` = '".$check."' where id = '".$id."'";
 $re = $Mysql->query($query);
+switch($check){
+    case 1 : $comment = '待审核';break;
+    case 2 : $comment = '通过';break;
+    case 3 : $comment = '不通过';break;
+}
 switch($check){
     case 1 : $comment = '待审核';break;
     case 2 : $comment = '通过';break;
@@ -41,7 +47,7 @@ if($re){
         $to = $email;
         $mail->AddAddress($to);
         $mail->Subject  = "广外教室申请回复";
-        $mail->Body = $name."同学你申请的".$date." ".$time."教室".$building."-".$room."经过教室管理员审核后,予以".$comment;
+        $mail->Body = $name."同学你申请的".$date." ".$time.$type.$building."-".$room."经过教室管理员审核后,予以".$comment;
         $mail->AltBody    = "To view the message, please use an HTML compatible email viewer!"; //当邮件不支持html时备用显示，可以省略
         $mail->WordWrap   = 80; // 设置每行字符串的长度
         //$mail->AddAttachment("f:/test.png");  //可以添加附件

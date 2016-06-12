@@ -14,7 +14,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['user'] && $_POST['password'])
     $Mysql->query($query);
     if(mysql_affected_rows() > 0){
         session_start();
-        $_SESSION['user'] = $user;
+        $_SESSION['admin'] = $user;
         $Mysql->close();
         header('location: management.php');
         exit;
