@@ -18,7 +18,8 @@
     }
 	if(isset($_GET['value']) && $_GET['value'] == 1){
         unlink('../cookies/'.$_SESSION['num'].'.txt');
-        session_destroy();
+        unset($_SESSION['user']);
+        unset($_SESSION['num']);
 	    header('location:index.php');
 	    exit;
 	}
@@ -26,7 +27,7 @@
     ?>
 	<div id="main">
         <div id="logout">
-            <p><?php echo $_SESSION['user']."(".$_SESSION['num'].")";?><a href="main.php?value=1"><img src="../photo/logout.png" width="25"  height="25"/></a></p>
+            <p><a href="order.php"><?php echo $_SESSION['user']."(".$_SESSION['num'].")";?></a><a href="main.php?value=1"><img src="../photo/logout.png" width="25"  height="25"/></a></p>
         </div>
 		<div id="sel">
 		<form method="post" action="javascript:void(0);">
@@ -64,54 +65,9 @@
         </form>
 		
 		</div>
-<!--        <div id="lab">-->
-<!--            <div>-->
-<!--                <div class="normal floatl busy"><p>03</p>-->
-<!--                </div>-->
-<!--                <div class="normal floatl chosen"><a href="">04</a></div>-->
-<!--                <div class="normal floatl free"><a href="">05</a></div>-->
-<!--            </div>-->
-<!--            <div>-->
-<!--                <div class="large floatr busy"><p>07</p>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-		<div id="room">
-<!--				<div class="normal floatl busy"><p>01</p>-->
-<!--				</div>-->
-<!--				<div class="normal floatl busy"><p>02</p>-->
-<!--				</div>-->
-<!--				<div class="normal floatl chosen" onmouseover=""><a href="">03</a>-->
-<!--				</div>-->
-<!--				<div class="normal floatl free" onmouseover=""><a href="#">04</a>-->
-<!--				</div>-->
-<!--				<div class="normal floatl chosen" onmouseover=""><p>05</p>-->
-<!--				</div>-->
-<!--				<div class="normal floatl chosen" onmouseover=""><p>06</p>-->
-<!--				</div>-->
-<!--				<div class="medium floatl busy"><p>07</p>-->
-<!--				</div>-->
-<!--				<div class="medium floatl free" onmouseover=""><a href="">08</a>-->
-<!--				</div>-->
-<!--				<div class="normal floatl busy"><p>09</p>-->
-<!--				</div>-->
-<!--				<div class="normal floatl busy"><p>10</p>-->
-<!--				</div>-->
-<!--				<div class="normal floatl chosen" onmouseover=""><p>11</p>-->
-<!--				</div>-->
-<!--				<div class="normal floatl free" onmouseover=""><a href="">12</a>-->
-<!--				</div>-->
-<!--				<div class="normal floatl chosen" onmouseover=""><p>13</p>-->
-<!--				</div>-->
-<!--				<div class="normal floatl chosen"><a href="">14</a></div>-->
-<!--            <div class="large floatl busy"><a href="">15</a></div>-->
-<!--            <div id="lab">-->
-<!--                <div class="normal floatl busy"><p>03</p></div>-->
-<!--                <div class="normal floatl chosen"><a href="">04</a></div>-->
-<!--                <div class="normal floatl free"><a href="">05</a></div>-->
-<!--                <div class="large floatr busy"><p>07</p></div>-->
-<!--            </div>-->
 
+		<div id="room">
+            
 		</div>
         <div class="tipBox">
             <div>
@@ -124,7 +80,7 @@
             </div>
             <div>
                 <div class="busy tips"></div>
-                <p class="tip">预约成功</p>
+                <p class="tip">预约成功或上课需要</p>
             </div>
         </div>
 		<div id="info">
@@ -136,7 +92,7 @@
             <img id="close" src="../photo/close.png"/>
             <form method="post" action="insertOrder.php">
                 <p>本宝宝的名字：<?php echo $_SESSION['user']; ?></p>
-                <p id="classroom">本宝宝所申请的教室：</p>
+                <p id="classroom"></p>
                 <p>电话：<input type="text" class="inp" name="phone" placeholder=""/></p>
                 <p>邮箱：<input type="text" class="inp" name="email" placeholder="" /></p>
                 <input type="text" class="inp" name="date" hidden="hidden" value=""/>
@@ -225,6 +181,7 @@
                         }
                         classroom += data[item].building;
                         classroom += data[item].room;
+                        console.log(classroom);
                         if(flag == 0){
                             div += '<div class="'+className+'" onmouseover="getInfo(this)"><a href="javascript:void(0)" onclick="order('+data[item].id+",'"+classroom+'\')">'+(i++)+'</a></div>';
                         }else{
@@ -269,9 +226,10 @@
         document.getElementById('info').innerHTML = infoDiv;
     }
     function order(id,classroom){
+//        alert(classroom);
         var date = document.getElementById('date').value,
             time = document.getElementById('time').value;
-        document.getElementById('classroom').innerHTML += classroom;
+        document.getElementById('classroom').innerHTML = "本宝宝所申请的教室："+classroom;
         var orderForm = document.forms[1];
 //        console.log(orderForm);
         orderForm.date.value = date;

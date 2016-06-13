@@ -71,7 +71,9 @@ class Gdufs {
         curl_close($ch);
         $pattern = '#<div id="Top1_divLoginName" class="Nsb_top_menu_nc" style=".+?">(.+?)</div>#';
         if(preg_match($pattern, $content ,$match)){
-            $this->name = explode('(',$match[1])[0];
+
+            $re = explode('(',$match[1]);
+            $this->name = $re[0];
             return true;
         }
         return false;

@@ -6,8 +6,8 @@
  * Time: 15:21
  */
 session_start();
-if(isset($_SESSION['user']) && !empty($_SESSION['user'])){
-    session_destroy();
+if(isset($_SESSION['admin']) && !empty($_SESSION['admin'])){
+    unset($_SESSION['admin']);
     header('location:login.html');
     exit;
 }
