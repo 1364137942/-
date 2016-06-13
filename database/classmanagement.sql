@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*
 Navicat MySQL Data Transfer
 
@@ -12,6 +13,9 @@ File Encoding         : 65001
 
 Date: 2016-06-12 19:07:25
 */
+=======
+
+>>>>>>> 0223b849bb362fb87d84cbd94e8a51b91f134348
 
 SET FOREIGN_KEY_CHECKS=0;
 
