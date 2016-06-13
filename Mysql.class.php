@@ -13,7 +13,7 @@ class Mysql {
     public function __construct() {
 
 
-        $connect = mysql_connect('localhost','root','') or die('fail to connect');
+        $connect = mysql_connect('121.42.171.181','root','ali') or die('fail to connect');
         $this->conn = mysql_select_db('classmanagement',$connect) or die('fail to connect classmanagement');
         mysql_set_charset('utf8');
 
